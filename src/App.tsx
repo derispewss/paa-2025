@@ -2,7 +2,7 @@ function App() {
   return (
     <>
       <h1 className="text-3xl font-bold underline">
-        Hello, PAA 2025!
+        Hello, Malas ngoding
       </h1>
     </>
   )
