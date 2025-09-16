@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+.title {
+  font-family: 'HighCrush';
+}
+
+:root {
+  --primary: oklch(0.3238 0.1353 292.43);
+  --secondary: oklch(0.2791 0.0918 297.91);
+  --accent: oklch(0.7467 0.1545 300.37);
+  --foreground: oklch(81.093% 0.00009 271.152);
+}
+
+@theme {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-foreground: var(--foreground);
+}
