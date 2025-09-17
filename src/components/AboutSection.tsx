@@ -43,7 +43,7 @@ const AboutSection = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          APA ITU PAA
+          APA ITU PAA?
         </h1>
         
         <div 
@@ -103,39 +103,13 @@ const AboutSection = () => {
               onClick={handleReadMore}
               className={`absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-accent text-primary px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/50 ${
                 isReading ? 'bg-secondary' : 'bg-accent'
-              }`}
-            >
+              }`}>
               {isReading ? 'Sembunyikan Detail' : 'Baca Selengkapnya'}
               <span className={`ml-2 transition-transform duration-300 ${isReading ? 'rotate-180' : ''}`}>
                 ▼
               </span>
             </button>
-            
-            {/* Hover glow effect */}
-            <div className="absolute inset-0 bg-accent/5 rounded-2xl sm:rounded-3xl transition-opacity duration-300 opacity-0 group-hover:opacity-100 -z-10" />
           </div>
-        </div>
-        
-        {/* Statistics cards */}
-        <div 
-          className={`mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-4xl transition-all duration-1000 delay-500 transform ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          {[
-            { label: "Anggota Aktif", value: "150+", icon: "👥" },
-            { label: "Kegiatan per Tahun", value: "25+", icon: "🎯" },
-            { label: "Alumni Sukses", value: "500+", icon: "🎓" }
-          ].map((stat, index) => (
-            <div 
-              key={index}
-              className="bg-primary/30 backdrop-blur-sm border border-accent/20 rounded-xl p-4 text-center hover:bg-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/10"
-            >
-              <div className="text-2xl mb-2">{stat.icon}</div>
-              <div className="text-xl sm:text-2xl font-bold text-accent">{stat.value}</div>
-              <div className="text-xs sm:text-sm text-foreground/80">{stat.label}</div>
-            </div>
-          ))}
         </div>
       </div>
     </section>

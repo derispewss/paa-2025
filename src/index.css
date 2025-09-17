@@ -85,3 +85,67 @@ body {
   --color-accent: var(--accent);
   --color-foreground: var(--foreground);
 }
+
+/* Line clamp utilities for text truncation */
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Responsive font sizing for better mobile experience */
+@media (max-width: 640px) {
+  .title {
+    font-size: clamp(1.25rem, 5vw, 2rem);
+    line-height: 1.2;
+  }
+}
+
+/* Improved mobile touch targets */
+@media (max-width: 768px) {
+  button, .cursor-pointer {
+    min-height: 44px;
+  }
+  
+  /* Better spacing for mobile cards */
+  .hover\:scale-105:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* Hardware acceleration utilities for parallax */
+.transform-gpu {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+/* Smooth transitions for parallax elements */
+.parallax-smooth {
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Enhanced cloud transitions */
+.cloud-transition {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.5s ease-out;
+}
+
+/* Better container spacing */
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}

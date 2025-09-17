@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import logoPAA from "../assets/images/logo.png";
 import { useLocation } from "react-router-dom";
+import { Home, Info, Target, UserPlus, Menu, X, Calendar, Route } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,17 +10,18 @@ const Navbar = () => {
   const [activeHash, setActiveHash] = useState(location.hash);
 
   const navItems = [
-    { name: "Home", path: "/", icon: "🏠" },
-    { name: "Tentang", path: "#about", icon: "📋" },
-    { name: "Bidang", path: "#hmti", icon: "🎯" },
-    { name: "Daftar Disini", path: "#registration", icon: "📝" },
+    { name: "Home", path: "/", icon: Home },
+    { name: "Tentang", path: "#about", icon: Info },
+    { name: "Bidang", path: "#hmti", icon: Target },
+    { name: "Acara", path: "#events", icon: Calendar },
+    { name: "Perjalanan", path: "#journey", icon: Route },
+    { name: "Daftar Disini", path: "#registration", icon: UserPlus },
   ];
 
   useEffect(() => {
     const onHashChange = () => setActiveHash(window.location.hash);
     window.addEventListener("hashchange", onHashChange);
     
-    // Handle scroll effect
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       setScrolled(scrollTop > 50);
@@ -95,9 +97,7 @@ const Navbar = () => {
                   }`}
                 >
                   <span className="flex items-center space-x-2">
-                    <span className="text-xs opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                      {item.icon}
-                    </span>
+                    <item.icon className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
                     <span>{item.name}</span>
                   </span>
                   
@@ -121,17 +121,11 @@ const Navbar = () => {
               aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>
-              <div className="relative w-6 h-6">
-                <span className={`absolute left-0 top-1 w-6 h-0.5 bg-current transition-all duration-300 ${
-                  isOpen ? 'rotate-45 top-3' : ''
-                }`}></span>
-                <span className={`absolute left-0 top-3 w-6 h-0.5 bg-current transition-all duration-300 ${
-                  isOpen ? 'opacity-0' : ''
-                }`}></span>
-                <span className={`absolute left-0 top-5 w-6 h-0.5 bg-current transition-all duration-300 ${
-                  isOpen ? '-rotate-45 top-3' : ''
-                }`}></span>
-              </div>
+              {isOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -154,9 +148,7 @@ const Navbar = () => {
               style={{ animationDelay: `${index * 50}ms` }}
             >
               <span className="flex items-center space-x-3">
-                <span className="text-sm opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                  {item.icon}
-                </span>
+                <item.icon className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
                 <span>{item.name}</span>
               </span>
               

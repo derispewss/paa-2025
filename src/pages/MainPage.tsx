@@ -1,19 +1,45 @@
-import { useLayoutEffect, useRef, useState } from "react";
-import HeroSection from "../components/HeroSection";
-import AboutSection from "../components/AboutSection";
-import HMTISection from "../components/HMTISection";
-import RegistrationCTA from "../components/RegistrationCTA";
+import { useLayoutEffect, useRef, useState, useCallback } from "react";
+import { 
+  LazyHeroSection,
+  LazyAboutSection,
+  LazyHMTISection,
+  LazyEventsSection,
+  LazyJourneySection,
+  LazyRegistrationCTA,
+  LazyFooter
+} from "../components/LazyComponents";
 import ParallaxBackground from "../components/ParallaxBackground";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 const MainPage = () => {
   const [scrollY, setScrollY] = useState(0);
-  const getScrollValue = (e: number) => {
-    setScrollY((e / divHeight) * 100);
-    console.log((e / divHeight) * 100);
-  };
-
   const [divHeight, setDivHeight] = useState(0);
   const divRef = useRef<HTMLDivElement>(null);
+  const ticking = useRef(false);
+
+  // Optimized scroll handler with immediate updates for parallax
+  const getScrollValue = useCallback((scrollTop: number) => {
+    if (!ticking.current) {
+      // Use immediate update for smoother parallax
+      const newScrollY = divHeight > 0 ? (scrollTop / divHeight) * 100 : 0;
+      setScrollY(newScrollY);
+      
+      // Still use RAF for performance, but don't block immediate updates
+      requestAnimationFrame(() => {
+        ticking.current = false;
+      });
+      ticking.current = true;
+    } else {
+      // For rapid scrolling, still update immediately
+      const newScrollY = divHeight > 0 ? (scrollTop / divHeight) * 100 : 0;
+      setScrollY(newScrollY);
+    }
+  }, [divHeight]);
+
+  // Throttled scroll event handler
+  const handleScroll = useCallback((e: React.UIEvent<HTMLDivElement>) => {
+    getScrollValue(e.currentTarget.scrollTop);
+  }, [getScrollValue]);
 
   useLayoutEffect(() => {
     if (divRef.current) {
@@ -22,14 +48,22 @@ const MainPage = () => {
   }, []);
 
   return (
-    <div ref={divRef} onScroll={(e) => {getScrollValue(e.currentTarget.scrollTop)}}
-      className="w-full text-['Jakarta'] bg-primary max-h-screen overflow-y-auto relative">
-      <HeroSection />
-      <AboutSection />
-      <HMTISection />
-      <RegistrationCTA />
-      <ParallaxBackground scrollY={scrollY} />
-    </div>
+    <ErrorBoundary>
+      <div 
+        ref={divRef} 
+        onScroll={handleScroll}
+        className="w-full text-['Jakarta'] bg-primary max-h-screen overflow-y-auto relative"
+      >
+        <LazyHeroSection />
+        <LazyAboutSection />
+        <LazyHMTISection />
+        <LazyEventsSection />
+        <LazyJourneySection />
+        <LazyRegistrationCTA />
+        <LazyFooter />
+        <ParallaxBackground scrollY={scrollY} />
+      </div>
+    </ErrorBoundary>
   );
 };
 
