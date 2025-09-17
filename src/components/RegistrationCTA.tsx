@@ -127,15 +127,6 @@ const RegistrationCTA = () => {
       {/* Main content container - properly centered */}
       <div className="relative z-30 text-white px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6">
-          
-          {/* Status Badge */}
-          <div className="flex items-center justify-center gap-2 mb-4 sm:mb-6">
-            {statusInfo.statusIcon}
-            <span className={`text-sm font-semibold ${statusInfo.statusColor}`}>
-              Status: {statusInfo.statusText}
-            </span>
-          </div>
-
           {/* Main Title */}
           <h1 
             className={`title text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight transition-all duration-1000 transform ${

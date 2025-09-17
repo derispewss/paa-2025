@@ -32,13 +32,12 @@ const ParallaxBackground = ({ scrollY }: ParallaxBackgroundProps) => {
 
       Promise.all(imagePromises)
         .then(() => setImagesLoaded(true))
-        .catch(() => setImagesLoaded(true)); // Still show even if some images fail
+        .catch(() => setImagesLoaded(true));
     } else {
       setImagesLoaded(true);
     }
   }, [reducedMotion]);
 
-  // Detect mobile and motion preferences
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -61,7 +60,6 @@ const ParallaxBackground = ({ scrollY }: ParallaxBackgroundProps) => {
     };
   }, []);
 
-  // Optimized transforms with enhanced cloud behavior
   const transforms = useMemo(() => {
     if (reducedMotion) {
       return {
@@ -76,40 +74,34 @@ const ParallaxBackground = ({ scrollY }: ParallaxBackgroundProps) => {
 
     const multiplier = isMobile ? 0.5 : 1;
     
-    // Enhanced cloud behavior based on scroll position
     let cloudLeftX, cloudRightX, cloudOpacity;
     
     if (scrollY < 20) {
-      // Initial position - clouds are at the edges
       cloudLeftX = scrollY * -0.8 * multiplier;
       cloudRightX = scrollY * 0.8 * multiplier;
       cloudOpacity = 1;
     } else if (scrollY < 50) {
-      // Approaching about section - clouds move back towards center with smooth easing
       const returnProgress = (scrollY - 20) / 30; // 0 to 1
       const easedProgress = 1 - Math.pow(1 - returnProgress, 3); // Cubic ease-out
       const baseMovement = 20 * -0.8 * multiplier; // Movement from first phase
       const returnMovement = baseMovement * (1 - easedProgress * 0.7); // Return 70% back
-      
       cloudLeftX = returnMovement;
       cloudRightX = -returnMovement;
       cloudOpacity = 1 - (easedProgress * 0.2); // Slight fade with easing
     } else {
-      // About section and beyond - clouds fade out and move off-screen
       const exitProgress = Math.min((scrollY - 50) / 25, 1); // 0 to 1, faster exit
       const easedExit = Math.pow(exitProgress, 2); // Quadratic ease-in
       cloudLeftX = -100 * multiplier - (easedExit * 80); // Move further left
       cloudRightX = 100 * multiplier + (easedExit * 80); // Move further right
       cloudOpacity = Math.max(0.8 - (easedExit * 0.8), 0); // Fade out completely
     }
-
     return {
       planetBehind: `translate3d(0, ${scrollY * 0.6 * multiplier}px, 0)`,
       cloudLeft: `translate3d(${cloudLeftX}px, 0, 0)`,
       cloudRight: `translate3d(${cloudRightX}px, 0, 0)`,
       planetsVertical: `translate3d(0, ${scrollY * -0.4 * multiplier}px, 0)`,
       cloudOpacity: cloudOpacity,
-      planetOpacity: scrollY > 80 ? Math.max(0.3, 1 - (scrollY - 80) / 40) : 1, // Planet fades after 80% scroll
+      planetOpacity: scrollY > 80 ? Math.max(0.3, 1 - (scrollY - 80) / 40) : 1, 
     };
   }, [scrollY, isMobile, reducedMotion]);
 
@@ -190,7 +182,6 @@ const ParallaxBackground = ({ scrollY }: ParallaxBackgroundProps) => {
                 loading="lazy"
                 decoding="async"
               />
-              
               {/* Top Right Planet */}
               <img
                 src={Planet4}
@@ -199,7 +190,6 @@ const ParallaxBackground = ({ scrollY }: ParallaxBackgroundProps) => {
                 loading="lazy"
                 decoding="async"
               />
-              
               {/* Bottom Right Planet */}
               <img
                 src={Planet2}
@@ -208,7 +198,6 @@ const ParallaxBackground = ({ scrollY }: ParallaxBackgroundProps) => {
                 loading="lazy"
                 decoding="async"
               />
-              
               {/* Bottom Left Small Planet */}
               <img
                 src={Planet3}

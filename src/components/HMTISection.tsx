@@ -23,7 +23,7 @@ const HMTISection = () => {
   ];
 
   return (
-    <section id="hmti" className="min-h-screen w-full relative overflow-hidden">
+    <section id="bidang" className="min-h-screen w-full relative overflow-hidden">
       {/* bg element */}
       <div className="w-full min-h-screen absolute top-0 left-0 flex z-10 justify-center">
         <div className="bg-gradient-to-b opacity-0 w-full min-h-screen absolute top-0 left-0 from-secondary to-primary"></div>

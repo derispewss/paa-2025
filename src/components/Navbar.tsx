@@ -12,7 +12,7 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", path: "/", icon: Home },
     { name: "Tentang", path: "#about", icon: Info },
-    { name: "Bidang", path: "#hmti", icon: Target },
+    { name: "Bidang", path: "#bidang", icon: Target },
     { name: "Acara", path: "#events", icon: Calendar },
     { name: "Perjalanan", path: "#journey", icon: Route },
     { name: "Daftar Disini", path: "#registration", icon: UserPlus },
@@ -21,14 +21,14 @@ const Navbar = () => {
   useEffect(() => {
     const onHashChange = () => setActiveHash(window.location.hash);
     window.addEventListener("hashchange", onHashChange);
-    
+
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       setScrolled(scrollTop > 50);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
-    
+
     return () => {
       window.removeEventListener("hashchange", onHashChange);
       window.removeEventListener("scroll", handleScroll);
@@ -62,11 +62,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${
-      scrolled 
-        ? 'bg-primary/95 backdrop-blur-lg border-accent/30 shadow-lg shadow-primary/50' 
-        : 'bg-primary/90 backdrop-blur-md border-accent/20'
-    }`}>
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${
+        scrolled
+          ? "bg-primary/95 backdrop-blur-lg border-accent/30 shadow-lg shadow-primary/50"
+          : "bg-primary/90 backdrop-blur-md border-accent/20"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
@@ -92,21 +94,15 @@ const Navbar = () => {
                   onClick={() => handleNavClick(item.path)}
                   className={`group relative px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:scale-105 ${
                     isActive(item.path)
-                      ? "text-accent bg-accent/20 shadow-lg shadow-accent/20"
-                      : "text-foreground hover:text-accent hover:bg-accent/10"
+                      ? "text-accent/100 bg-accent/10"
+                      : "text-foreground/70 hover:text-accent hover:bg-accent/10"
                   }`}
                 >
                   <span className="flex items-center space-x-2">
                     <item.icon className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
                     <span>{item.name}</span>
                   </span>
-                  
-                  {/* Active indicator */}
-                  {isActive(item.path) && (
-                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-accent rounded-full animate-pulse"></div>
-                  )}
-                  
-                  {/* Hover effect */}
+                  {/* Hover effect bg */}
                   <div className="absolute inset-0 bg-accent/5 rounded-md transform scale-0 group-hover:scale-100 transition-transform duration-200 -z-10"></div>
                 </button>
               ))}
@@ -121,20 +117,18 @@ const Navbar = () => {
               aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>
-              {isOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Navigation */}
-      <div className={`md:hidden transition-all duration-300 overflow-hidden ${
-        isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-      }`}>
+      <div
+        className={`md:hidden transition-all duration-300 overflow-hidden ${
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-primary/95 backdrop-blur-lg border-t border-accent/30">
           {navItems.map((item, index) => (
             <button
@@ -142,8 +136,8 @@ const Navbar = () => {
               onClick={() => handleNavClick(item.path)}
               className={`group block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-all duration-300 hover:scale-105 transform ${
                 isActive(item.path)
-                  ? "text-accent bg-accent/20 shadow-lg shadow-accent/20"
-                  : "text-foreground hover:text-accent hover:bg-accent/10"
+                  ? "text-accent/100 bg-accent/10"
+                  : "text-foreground/70 hover:text-accent hover:bg-accent/10"
               }`}
               style={{ animationDelay: `${index * 50}ms` }}
             >
@@ -151,11 +145,6 @@ const Navbar = () => {
                 <item.icon className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
                 <span>{item.name}</span>
               </span>
-              
-              {/* Mobile active indicator */}
-              {isActive(item.path) && (
-                <div className="ml-2 inline-block w-2 h-2 bg-accent rounded-full animate-pulse"></div>
-              )}
             </button>
           ))}
         </div>

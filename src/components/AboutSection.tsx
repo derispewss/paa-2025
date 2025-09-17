@@ -103,7 +103,8 @@ const AboutSection = () => {
               onClick={handleReadMore}
               className={`absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-accent text-primary px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/50 ${
                 isReading ? 'bg-secondary' : 'bg-accent'
-              }`}>
+              } hidden sm:block`} // <-- disini tambahin
+            >
               {isReading ? 'Sembunyikan Detail' : 'Baca Selengkapnya'}
               <span className={`ml-2 transition-transform duration-300 ${isReading ? 'rotate-180' : ''}`}>
                 ▼

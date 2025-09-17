@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Mail, Phone, MapPin, Instagram, Facebook, Twitter, Youtube, ExternalLink, Heart } from "lucide-react";
+import logoHMTI from "../assets/images/logo_hmti.png"
 
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -68,17 +69,17 @@ const Footer = () => {
     {
       icon: MapPin,
       title: "Alamat",
-      content: "Gedung H Lt.4, Universitas Dian Nuswantoro\nJl. Nakula I No.5-11, Semarang"
+      content: "Universitas Dian Nuswantoro"
     },
     {
       icon: Phone,
       title: "Telepon",
-      content: "+62 24 3569 196"
+      content: "+62 822-2908-1327 | Fahmi\n+62 877-7457-9710 | Iqbal"
     },
     {
       icon: Mail,
       title: "Email",
-      content: "hmti@dinus.ac.id"
+      content: "udinus.hmti@gmail.com"
     }
   ];
 
@@ -99,19 +100,16 @@ const Footer = () => {
           {/* HMTI Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-4 sm:mb-6">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-accent to-secondary rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
-                <span className="text-primary font-bold text-sm sm:text-lg title">H</span>
-              </div>
+                <img
+                src={logoHMTI}
+                alt="HMTI Logo"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl object-cover flex-shrink-0"
+                />
               <div className="min-w-0">
                 <h3 className="text-lg sm:text-xl font-bold text-white title">HMTI UDINUS</h3>
                 <p className="text-foreground/70 text-xs sm:text-sm">Himpunan Mahasiswa Teknik Informatika</p>
               </div>
             </div>
-            
-            <p className="text-foreground/80 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base max-w-lg">
-              Organisasi mahasiswa yang berkomitmen mengembangkan potensi akademik dan non-akademik 
-              mahasiswa Teknik Informatika Universitas Dian Nuswantoro.
-            </p>
 
             {/* Social Media */}
             <div className="flex flex-wrap gap-2 sm:gap-3">
