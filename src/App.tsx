@@ -1,13 +1,13 @@
 import MainPage from "./pages/MainPage";
-import ParallaxPages from "./pages/Parallax";
+import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./style/fonts.css"
 
 function App() {
   return (
     <Router>
+      <Navbar />
       <Routes>
-        <Route path="/test" element={<ParallaxPages />} />
         <Route path="/" element={<MainPage />} />
       </Routes>
     </Router>

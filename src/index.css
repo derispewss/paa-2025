@@ -1,7 +1,75 @@
 @import "tailwindcss";
 
+/* hide scrollbar tapi scroll masih jalan */
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;  /* IE dan Edge lama */
+  scrollbar-width: none;     /* Firefox */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
 .title {
   font-family: 'HighCrush';
+}
+
+/* Custom animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Responsive breakpoints for custom styles */
+@media (max-width: 640px) {
+  .title {
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    line-height: 1.1;
+  }
+}
+
+/* Ensure full viewport height on mobile devices */
+@media screen and (max-height: 768px) and (max-width: 1024px) {
+  .min-h-screen {
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+  }
+}
+
+/* Interactive button effects */
+.group:hover .group-hover\:animate-glow {
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px theme('colors.accent');
+  }
+  to {
+    box-shadow: 0 0 20px theme('colors.accent'), 0 0 30px theme('colors.accent');
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  scroll-behavior: smooth;
 }
 
 :root {
