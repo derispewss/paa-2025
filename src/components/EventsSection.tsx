@@ -7,7 +7,7 @@ import wp from "../assets/images/wp.jpg";
 const EventsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeEvent, setActiveEvent] = useState(0);
-  const [isHovered, setIsHovered] = useState(false); // ⬅️ tambahan state
+  const [isHovered, setIsHovered] = useState(false);
   const [imageLoading, setImageLoading] = useState<Record<number, boolean>>({});
   const [imageError, setImageError] = useState<Record<number, boolean>>({});
   const sectionRef = useRef<HTMLElement>(null);
