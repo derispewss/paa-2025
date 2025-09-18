@@ -18,7 +18,7 @@ const BidangCard = ({ icon, title, description, delay = 0 }: BidangCardProps) =>
 
   return (
     <div 
-      className={`w-full text-center gap-4 sm:gap-6 lg:gap-8 flex items-center flex-col p-4 sm:p-6 lg:p-10 bg-primary/10 backdrop-blur-sm bg-blend-color border-t-4 shadow-sm rounded-lg transition-all duration-500 transform hover:scale-105 hover:shadow-xl hover:shadow-accent/20 cursor-pointer group animate-fade-in-up`}
+      className={`w-full text-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 flex items-center flex-col p-3 sm:p-4 md:p-6 lg:p-10 bg-primary/10 backdrop-blur-sm bg-blend-color border-t-4 shadow-sm rounded-lg transition-all duration-500 transform hover:scale-105 hover:shadow-xl hover:shadow-accent/20 cursor-pointer group animate-fade-in-up relative`}
       style={{ animationDelay: `${delay}ms` }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -28,7 +28,7 @@ const BidangCard = ({ icon, title, description, delay = 0 }: BidangCardProps) =>
         <img 
           src={icon} 
           alt={title} 
-          className={`w-16 sm:w-20 lg:w-24 h-auto transition-all duration-500 transform ${
+          className={`w-12 sm:w-16 md:w-20 lg:w-24 h-auto transition-all duration-500 transform ${
             isHovered ? 'scale-110 rotate-6' : 'scale-100 rotate-0'
           } ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           onLoad={() => setImageLoaded(true)}
@@ -40,21 +40,21 @@ const BidangCard = ({ icon, title, description, delay = 0 }: BidangCardProps) =>
         }`} />
       </div>
       
-      <h1 className={`title text-sm sm:text-base lg:text-lg xl:text-xl leading-tight transition-colors duration-300 ${
+      <h1 className={`title text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl leading-tight transition-colors duration-300 ${
         isHovered ? 'text-accent' : 'text-white'
       }`}>
         {title}
       </h1>
       
-      <div className={`overflow-hidden transition-all duration-500 ${
-        isExpanded ? 'max-h-96 opacity-100' : 'max-h-20 opacity-80'
+      <div className={`overflow-hidden transition-all duration-500 relative ${
+        isExpanded ? 'max-h-96 opacity-100' : 'max-h-16 sm:max-h-20 opacity-80'
       }`}>
-        <p className="text-xs sm:text-sm lg:text-base text-justify leading-relaxed">
+        <p className="text-xs sm:text-sm lg:text-base text-justify leading-relaxed px-1 sm:px-2">
           {description}
         </p>
         
         {!isExpanded && (
-          <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none" />
+          <div className="absolute bottom-0 left-0 right-0 h-6 sm:h-8 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none" />
         )}
       </div>
       
