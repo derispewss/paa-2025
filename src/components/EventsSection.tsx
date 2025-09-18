@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Calendar, MapPin } from "lucide-react";
 import hitech from "../assets/images/hitech.jpg";
+import semnasti from "../assets/images/semnasti.jpg";
+import wp from "../assets/images/wp.jpg";
 
 const EventsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -14,6 +16,24 @@ const EventsSection = () => {
     {
       id: 1,
       prev: {
+        title: "Welcoming Party 2024",
+        description: "Acara makrab bersama anggota aktif HMTI dan calon anggota baru untuk mempererat tali silaturahmi serta memperkenalkan berbagai kegiatan HMTI.",
+        date: "17 Nov 2024",
+      },
+      next: { 
+        title: "KONEK-TI 2025",
+        description: "Acara makrab seluruh mahasiswa Teknik Informatika Universitas Dian Nuswantoro Semarang yang bertujuan untuk mempererat tali silaturahmi antar mahasiswa baru dan anggota aktif HMTI melalui berbagai kegiatan menarik dan edukatif.",
+        date: "4-5 Oktober 2025",
+      },
+      location: "Theresiana",
+      image: wp,
+      status: "upcoming",
+      category: "Annual Event",
+      isAnnual: true, 
+    },
+    {
+      id: 2,
+      prev: {
         title: "SEMNASTI 2024",
         description: "Perkembangan teknologi digital membawa berbagai manfaat bagi masyarakat. Namun, banyak pihak di Indonesia belum memiliki pemahaman yang mendalam dan keterampilan teknis untuk merancang, mengembangkan, dan mengimplementasikan sistem keamanan siber yang efektif. Keterbatasan sumber daya manusia yang ahli di bidang ini menjadi hambatan utama dalam memaksimalkan pertahanan negara terhadap serangan siber yang semakin meningkat.",
         date: "30 November 2024",
@@ -23,14 +43,15 @@ const EventsSection = () => {
         title: "SEMNASTI 2025",
         description: "SEMNASTI 2025 mengusung tema Smart Living with AI: Real Tech for Real Life, membahas penerapan AI di Smart Home, Smart Healthcare, dan Autonomous Systems",
         date: "29 November 2025",
-        location: "-",
+        location: "MG. Setos",
       },
+      image: semnasti,
       status: "upcoming",
       category: "Annual Event",
       isAnnual: true,
     },
     {
-      id: 2,
+      id: 3,
       prev: {
         title: "ITC 2025",
         description: "IT Competition merupakan singkatan dari Information Technology Competition. Acara tersebut merupakan salah satu acara tahunan dari 58 event DINUS FESTIVAL yang diselenggarakan oleh Himpunan Mahasiswa Teknik Informatika Universitas Dian Nuswantoro Semarang yang terdiri dari 2 lomba yaitu Web Design dan Web Development. Tujuan dari lomba tersebut diantaranya menambah pengetahuan siswa, dan mahasiswa di bidang IT serta untuk mempersiapkan strategi menghadapi kemajuan teknologi saat ini, dan dimasa yang akan datang.",
@@ -49,7 +70,7 @@ const EventsSection = () => {
       isAnnual: true,
     },
     {
-      id: 3,
+      id: 4,
       prev: {
         title: "HI-Technology 2025",
         description: "HITECH adalah kegiatan yang diselenggarakan oleh Himpunan Mahasiswa Teknik Informatika sebagai wadah bagi mahasiswa untuk memamerkan proyek mereka serta berbagi inovasi di bidang teknologi. Acara ini juga menghadirkan sesi Open Talk dengan dua pembicara yang akan membahas topik menarik seputar teknologi dan pengembangan karier. Diselenggarakan selama dua hari, yaitu pada 14-15 Mei, HITECH bertujuan untuk menginspirasi, memperluas wawasan, dan membangun koneksi antar mahasiswa.",
@@ -66,31 +87,7 @@ const EventsSection = () => {
       status: "upcoming",
       category: "Annual Event",
       isAnnual: true,
-      highlight: "🚀 Next Generation",
-      participants: "800+ Peserta",
-    },
-    {
-      id: 4,
-      prev: {
-        title: "KONEK-TI 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        date: "4-5 Oktober 2025",
-      },
-      next: {
-        title: "KONEK-TI 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        date: "4-5 Oktober 2025",
-      },
-      location: "-",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      image: "/src/assets/images/techno-expo.jpg",
-      status: "upcoming",
-      category: "Annual Event",
-      isAnnual: true,
-      highlight: "🌐 Tech Network",
-      participants: "600+ Peserta",
-    },
+    }
   ];
 
   useEffect(() => {
@@ -213,10 +210,10 @@ const EventsSection = () => {
                       ANNUAL EVENT
                     </span>
                   )}
-                  <span className="text-accent text-xs sm:text-sm">
+                  <span className="bg-accent text-primary px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold">
                     {events[activeEvent].status === "upcoming"
-                      ? "Akan Datang"
-                      : "Selesai"}
+                      ? "COMING SOON"
+                      : "DONE"}
                   </span>
                 </div>
                 <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold mb-3 sm:mb-4 title">
@@ -233,7 +230,7 @@ const EventsSection = () => {
                   <div className="flex items-center space-x-2 sm:space-x-3">
                     <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-accent flex-shrink-0" />
                     <span className="truncate">
-                      {events[activeEvent].location}
+                      {events[activeEvent].next.location || "Lokasi akan diumumkan"}
                     </span>
                   </div>
                 </div>
@@ -355,6 +352,8 @@ const EventsSection = () => {
 
                   {/* Remove the old overlay that was duplicated */}
                 </div>
+
+                
                 <div className="flex justify-center items-center gap-3 sm:gap-2 mt-4 sm:mt-4 px-4">
                   {events.map((_, index) => (
                     <button
@@ -362,7 +361,7 @@ const EventsSection = () => {
                       aria-label={`Pilih event ${events[index].next.title}`}
                       tabIndex={0}
                       onClick={() => setActiveEvent(index)}
-                      className={`relative rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-1 focus:ring-offset-primary/20 touch-manipulation min-h-[44px] min-w-[44px] sm:min-h-[32px] sm:min-w-[32px] flex items-center justify-center ${
+                      className={`relative rounded-full transition-all duration-300 focus:outline-none touch-manipulation min-h-[44px] min-w-[44px] sm:min-h-[32px] sm:min-w-[32px] flex items-center justify-center ${
                         index === activeEvent
                           ? "active-dot"
                           : "inactive-dot hover:bg-foreground/50 active:bg-foreground/60"
