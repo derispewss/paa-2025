@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Calendar, MapPin } from "lucide-react";
 import hitech from "../assets/images/hitech.jpg";
 import semnasti from "../assets/images/semnasti.jpg";
-import wp from "../assets/images/wp.jpg";
+import wp from "../assets/images/welcoming-party.webp";
 
 const EventsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
