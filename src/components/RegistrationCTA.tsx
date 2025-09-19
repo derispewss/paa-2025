@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Calendar, Clock, AlertCircle, CheckCircle } from "lucide-react";
 
-const START_DATE = Number(import.meta.env.VITE_REGISTRATION_START_DATE);
-const END_DATE = Number(import.meta.env.VITE_REGISTRATION_END_DATE);
+const START_DATE = new Date("2025-09-22T10:00:00").getTime();
+const END_DATE = new Date("2025-10-06T23:59:59").getTime();
+const FORM_REGIST = "https://example.com";
 
 const calcTime = (ms: number) => ({
   days: Math.floor(ms / (1000 * 60 * 60 * 24)),
@@ -61,7 +62,7 @@ const RegistrationCTA = () => {
 
   const handleRegistration = () => {
     if (registrationStatus === "open") {
-      window.open(import.meta.env.VITE_FORM_REGIST, "_blank");
+      window.open(FORM_REGIST, "_blank");
     } else if (registrationStatus === "not-started") {
       alert("Pendaftaran belum dibuka. Silakan tunggu hingga 22 September 2025.");
     } else {
