@@ -1,7 +1,7 @@
 import BidangCard from "./BidangCard";
-import iconInfokom from "../assets/images/Icon INFOKOM.png";
-import iconIptek from "../assets/images/Icon IPTEK.png";
-import iconLitbang from "../assets/images/Icon LITBANG.png";
+import iconInfokom from "../assets/images/Logo Infokom.png";
+import iconIptek from "../assets/images/Logo Iptek.png";
+import iconLitbang from "../assets/images/Logo Litbang.png";
 
 const HMTISection = () => {
   const bidangData = [
