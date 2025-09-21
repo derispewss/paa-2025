@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Calendar, Clock, AlertCircle, CheckCircle } from "lucide-react";
 
-const START_DATE = new Date("2025-09-22T10:00:00").getTime();
+const START_DATE = new Date("2025-09-22T00:00:00").getTime();
 const END_DATE = new Date("2025-10-06T23:59:59").getTime();
-const FORM_REGIST = "https://example.com";
+const FORM_REGIST = "https://forms.gle/NRCzWc8HC57pMndA8";
 
 const calcTime = (ms: number) => ({
   days: Math.floor(ms / (1000 * 60 * 60 * 24)),
