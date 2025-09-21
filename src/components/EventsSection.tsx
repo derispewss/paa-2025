@@ -64,7 +64,7 @@ const EventsSection = () => {
       },
       next: {
         title: "ITC 2026",
-        description:"ITC adalah program kerja HMTI yang berupa Lomba IT/IT Competition. Acara tersebut akan dilaksanakan selama 1 hari. ITC diselenggarakan dengan target 100 orang peserta lomba melalui tahap seleksi menjadi 7 tim Web Desain dan 7 tim Web Devlopment, setelah tahap seleksi peserta akan lomba secara offline di UDINUS gedung H.7 Auditorium. Pada ITC 2026, lomba ini mengusung tema Pendidikan atau kewirausahaan. Peserta dapat memilih salah satu dari dua tema tersebut.",
+        description:"ITC (IT Competition) adalah proker HMTI berupa lomba IT satu hari dengan target 100 peserta. Setelah seleksi, tersaring 7 tim Web Design dan 7 tim Web Development yang akan bertanding offline di Gedung H.7 Auditorium UDINUS. ITC 2026 mengusung tema Pendidikan atau Kewirausahaan, peserta bebas memilih salah satunya.",
         date: "5 Februari 2026",
         location: "Universitas Dian Nuswantoro",
       },
