@@ -93,7 +93,7 @@ const AboutSection = () => {
               
               <div className="mt-4 pt-4 border-t border-accent/30">
                 <p className="text-accent font-bold">
-                  Tema 2025: <span className="text-white">"Empowering Tomorrow New Minds, New Generation"</span>
+                  Tema 2025: <span className="text-white">"Navigating the Future A Mission for New Explorers Among the Stars"</span>
                 </p>
               </div>
             </div>
