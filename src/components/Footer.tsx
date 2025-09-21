@@ -33,7 +33,7 @@ const Footer = () => {
     {
       name: "Instagram",
       icon: Instagram,
-      url: "https://instagram.com/hmti_udinus",
+      url: "https://instagram.com/hmtiudinus",
       color: "hover:text-pink-400"
     },
     {
@@ -45,13 +45,13 @@ const Footer = () => {
     {
       name: "Twitter",
       icon: Twitter,
-      url: "https://twitter.com/hmti_udinus",
+      url: "https://x.com/hmtiudinus",
       color: "hover:text-sky-400"
     },
     {
       name: "YouTube",
       icon: Youtube,
-      url: "https://youtube.com/hmtiudinus",
+      url: "https://www.youtube.com/@hmtiudinus4102",
       color: "hover:text-red-400"
     }
   ];
@@ -84,12 +84,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer ref={footerRef} className="w-full relative bg-gradient-to-b from-primary to-secondary border-t border-accent/20 overflow-hidden mt-8 sm:mt-12 lg:mt-16">
-      {/* Background decoration */}
-      <div className="w-full absolute top-0 left-0 flex z-20 justify-center">
-        <div className="bg-gradient-to-b opacity-0 w-full absolute top-0 left-0 from-secondary to-primary"></div>
-      </div>
-
+    <footer
+      ref={footerRef}
+      className="w-full relative z-50 bg-gradient-to-b from-primary to-secondary border-t border-accent/20 overflow-hidden mt-8 sm:mt-12 lg:mt-16
+      before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-secondary before:to-primary before:opacity-0 before:pointer-events-none"
+    >
       <div className="relative z-30 text-white px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto py-12 sm:py-16 lg:py-20">
         {/* Main Footer Content */}
         <div 
